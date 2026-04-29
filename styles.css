@@ -1,0 +1,315 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background: #0b0e1a;
+  background-image:
+    radial-gradient(ellipse at 30% 50%, rgba(20,40,80,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 20%, rgba(30,20,60,0.3) 0%, transparent 50%);
+  color: #c8cdd5;
+  min-height: 100vh;
+}
+
+header { text-align:center; padding:1.5rem 1rem 0.5rem; }
+header h1 { font-size:1.4rem; font-weight:300; color:#e0e4ea; }
+header h1 span { color:#60a5fa; font-weight:600; }
+.subtitle { font-size:0.75rem; color:#5a6270; letter-spacing:0.05em; }
+
+.sim-container {
+  width: 92%; max-width: 600px; margin: 1rem auto;
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+
+/* Cylinder area */
+.cylinder-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  min-height: 420px;
+  position: relative;
+}
+
+/* Mount bracket */
+.mount-bracket {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 12px;
+  background: #555;
+  border-radius: 3px;
+  border: 1px solid #777;
+}
+
+/* Cylinder assembly */
+.cylinder-assembly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.body {
+  width: 70px;
+  height: 140px;
+  background: linear-gradient(90deg, #888 0%, #bbb 30%, #ccc 50%, #bbb 70%, #888 100%);
+  border: 1px solid #999;
+  border-radius: 6px 6px 2px 2px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Air ports — 90 degree fittings */
+.air-port {
+  position: absolute;
+  width: 20px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.air-port .fitting {
+  width: 14px;
+  height: 10px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 2px;
+}
+
+.air-port span {
+  font-size: 0.45rem;
+  color: #f59e0b;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.port-1 { top: 15px; left: -22px; }
+.port-2 { top: 15px; right: -22px; flex-direction: row-reverse; }
+.port-2 span { margin-left: 0; margin-right: 2px; }
+.port-3 { bottom: 25px; left: -22px; }
+.port-4 { bottom: 25px; right: -22px; flex-direction: row-reverse; }
+.port-4 span { margin-left: 0; margin-right: 2px; }
+
+/* Stage 1 — extends downward out of body */
+.stage-1 {
+  width: 56px;
+  height: 0px;
+  background: linear-gradient(90deg, #333 0%, #444 30%, #4a4a4a 50%, #444 70%, #333 100%);
+  border: 1px solid #555;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.band {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  right: -2px;
+  height: 8px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 2px;
+}
+
+/* Stage 2 — extends downward out of stage 1 */
+.stage-2 {
+  width: 42px;
+  height: 0px;
+  background: linear-gradient(90deg, #555 0%, #777 30%, #888 50%, #777 70%, #555 100%);
+  border: 1px solid #666;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.rod-end {
+  width: 54px;
+  height: 10px;
+  background: linear-gradient(180deg, #666, #444);
+  border: 1px solid #555;
+  border-radius: 0 0 4px 4px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Position indicators */
+.pos-indicators {
+  position: relative;
+  height: 380px;
+  width: 130px;
+  margin-top: 22px;
+}
+
+.pos-line {
+  position: absolute;
+  left: 0; right: 0;
+  border-top: 1px dashed rgba(96,165,250,0.3);
+  padding-top: 2px;
+}
+
+.pos-line span {
+  font-size: 0.55rem;
+  color: #5a6270;
+  white-space: nowrap;
+}
+
+/* Flow control section */
+.flow-section {
+  padding: 1rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.flow-section h3 {
+  font-size: 0.85rem;
+  color: #e0e4ea;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.flow-note {
+  font-size: 0.7rem;
+  color: #5a6270;
+  margin-bottom: 0.75rem;
+}
+
+.flow-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.valve {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+}
+
+.valve-label {
+  font-size: 0.65rem;
+  color: #8b95a5;
+  min-width: 42px;
+}
+
+.flow-slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  outline: none;
+}
+
+.flow-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  background: #f59e0b;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.valve-val {
+  font-size: 0.6rem;
+  color: #f59e0b;
+  min-width: 40px;
+  text-align: right;
+}
+
+.speed-indicator {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #5a6270;
+}
+
+.speed-indicator strong { color: #6ee7b7; }
+
+/* Controls */
+.controls { display: flex; gap: 0.5rem; }
+
+.pos-btn {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0.7rem 0.4rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.pos-btn:hover {
+  background: rgba(96,165,250,0.08);
+  border-color: rgba(96,165,250,0.3);
+}
+
+.pos-btn.active {
+  background: rgba(96,165,250,0.12);
+  border-color: rgba(96,165,250,0.4);
+  box-shadow: 0 0 12px rgba(96,165,250,0.15);
+}
+
+.pos-num { font-size: 1.1rem; font-weight: 700; color: #60a5fa; }
+.pos-btn.active .pos-num { color: #6ee7b7; }
+.pos-label { font-size: 0.6rem; color: #5a6270; }
+.pos-btn.active .pos-label { color: #8b95a5; }
+
+/* Status */
+.status {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #5a6270;
+  padding: 0.6rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+.status strong { color: #c8cdd5; }
+
+.status-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.status-dot.retracted { background: #60a5fa; }
+.status-dot.moving { background: #f59e0b; animation: blink 0.5s infinite; }
+.status-dot.extended { background: #6ee7b7; }
+
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+@media (max-width: 500px) {
+  .controls { flex-wrap: wrap; }
+  .pos-btn { min-width: 45%; }
+  .flow-controls { grid-template-columns: 1fr; }
+}

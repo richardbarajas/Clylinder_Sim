@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARSAW De-stacker Cylinder Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>ARSAW De-stacker <span>Cylinder</span></h1>
+    <p class="subtitle">2-Stage Pneumatic Cylinder Simulator</p>
+  </header>
+
+  <div class="sim-container">
+    <div class="cylinder-area">
+      <!-- Mounting bracket at top -->
+      <div class="mount-bracket"></div>
+
+      <!-- Cylinder assembly — vertical -->
+      <div class="cylinder-assembly">
+        <!-- Body (outer barrel) -->
+        <div class="body">
+          <!-- Air line ports -->
+          <div class="air-port port-1" title="Air Line 1"><div class="fitting"></div><span>1</span></div>
+          <div class="air-port port-2" title="Air Line 2"><div class="fitting"></div><span>2</span></div>
+          <div class="air-port port-3" title="Air Line 3"><div class="fitting"></div><span>3</span></div>
+          <div class="air-port port-4" title="Air Line 4"><div class="fitting"></div><span>4</span></div>
+
+          <!-- Stage 1 telescopes down out of body -->
+          <div class="stage stage-1" id="stage1">
+            <div class="band"></div>
+
+            <!-- Stage 2 telescopes down out of stage 1 -->
+            <div class="stage stage-2" id="stage2">
+              <!-- Rod tip / end effector -->
+              <div class="rod-end"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Position labels on the side -->
+      <div class="pos-indicators">
+        <div class="pos-line" id="pos-line-0" style="top: 0%"><span>Pos 0 — Retracted</span></div>
+        <div class="pos-line" id="pos-line-1" style="top: 33%"><span>Pos 1</span></div>
+        <div class="pos-line" id="pos-line-2" style="top: 66%"><span>Pos 2 — Picks up totes</span></div>
+        <div class="pos-line" id="pos-line-3" style="top: 100%"><span>Pos 3 — Full extend</span></div>
+      </div>
+    </div>
+
+    <!-- Flow control -->
+    <div class="flow-section">
+      <h3>Flow Control Valves</h3>
+      <p class="flow-note">4 valves — all must be adjusted the same. Start 8 full turns out (CCW).</p>
+      <div class="flow-controls">
+        <div class="valve" id="valve-1"><span class="valve-label">Valve 1</span><input type="range" min="0" max="16" value="8" class="flow-slider" data-valve="1"><span class="valve-val">8 turns</span></div>
+        <div class="valve" id="valve-2"><span class="valve-label">Valve 2</span><input type="range" min="0" max="16" value="8" class="flow-slider" data-valve="2"><span class="valve-val">8 turns</span></div>
+        <div class="valve" id="valve-3"><span class="valve-label">Valve 3</span><input type="range" min="0" max="16" value="8" class="flow-slider" data-valve="3"><span class="valve-val">8 turns</span></div>
+        <div class="valve" id="valve-4"><span class="valve-label">Valve 4</span><input type="range" min="0" max="16" value="8" class="flow-slider" data-valve="4"><span class="valve-val">8 turns</span></div>
+      </div>
+      <div class="speed-indicator">Speed: <strong id="speed-text">Normal</strong></div>
+    </div>
+
+    <!-- Position buttons -->
+    <div class="controls">
+      <button class="pos-btn active" data-pos="0">
+        <span class="pos-num">0</span>
+        <span class="pos-label">Retracted</span>
+      </button>
+      <button class="pos-btn" data-pos="1">
+        <span class="pos-num">1</span>
+        <span class="pos-label">Mid Extend</span>
+      </button>
+      <button class="pos-btn" data-pos="2">
+        <span class="pos-num">2</span>
+        <span class="pos-label">Pick Totes</span>
+      </button>
+      <button class="pos-btn" data-pos="3">
+        <span class="pos-num">3</span>
+        <span class="pos-label">Full Extend</span>
+      </button>
+    </div>
+
+    <div class="status" id="status">
+      <span class="status-dot retracted"></span>
+      Position: <strong>Retracted</strong> — Stage 1: 0% · Stage 2: 0%
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
